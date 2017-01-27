@@ -8,28 +8,19 @@ import android.view.ViewGroup;
 
 import com.arena.gustavonovais.challengearena.AdapterNavigationBinding;
 import com.arena.gustavonovais.challengearena.R;
-import com.arena.gustavonovais.challengearena.model.NavObject;
+import com.arena.gustavonovais.challengearena.model.City;
 
 import java.util.List;
 
 public class AdapterNavigation extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
 
-    private List<NavObject> navObjectList;
+    private List<City> cityList;
     private OnItemSelectedListener listener;
     public AdapterNavigation(OnItemSelectedListener listener) {
         this.listener = listener;
-        NavObject navObject = new NavObject();
-        navObjectList = navObject.getList();
+        cityList = City.getAll();
     }
-
-    public AdapterNavigation(OnItemSelectedListener listener, NavObject object) {
-        this.listener = listener;
-        NavObject navObject = new NavObject();
-        navObjectList = navObject.getList();
-        navObjectList.add(object);
-    }
-
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -56,27 +47,27 @@ public class AdapterNavigation extends RecyclerView.Adapter<RecyclerView.ViewHol
         }
 
         public void bindItem(final int position) {
-            NavObject navObject = navObjectList.get(position);
+            City city = cityList.get(position);
 
-            binding.imageViewIcon.setImageResource(navObject.getIcon());
-            binding.txtTitle.setText(navObject.getTitle());
+            //binding.imageViewIcon.setImageResource(City.getIcon());
+            binding.txtTitle.setText(city.name);
         }
 
         @Override
         public void onClick(View v) {
             int postition = getAdapterPosition();
-            listener.onItemSelected(postition);
+            listener.onItemSelected(postition, cityList.get(postition));
         }
     }
 
     @Override
     public int getItemCount() {
-        return navObjectList.size();
+        return cityList.size();
     }
 
 
     public interface OnItemSelectedListener {
-        void onItemSelected(int position);
+        void onItemSelected(int position, City city);
     }
 
 }
