@@ -9,7 +9,6 @@ import android.view.ViewGroup;
 import com.arena.gustavonovais.challengearena.AdapterNextDaysBinding;
 import com.arena.gustavonovais.challengearena.R;
 import com.arena.gustavonovais.challengearena.enums.IconEnum;
-import com.arena.gustavonovais.challengearena.model.Daily;
 import com.arena.gustavonovais.challengearena.model.Data;
 import com.arena.gustavonovais.challengearena.utils.ActivityUtils;
 import com.arena.gustavonovais.challengearena.utils.DateUtils;
@@ -19,8 +18,7 @@ import java.util.ArrayList;
 public class AdapterNextDays extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
 
-    private ArrayList<Data> dataList;
-    private OnItemSelectedListener listener;
+    private final ArrayList<Data> dataList;
 
     public AdapterNextDays(ArrayList<Data> dataList) {
         this.dataList = dataList;
@@ -40,14 +38,13 @@ public class AdapterNextDays extends RecyclerView.Adapter<RecyclerView.ViewHolde
         }
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        AdapterNextDaysBinding binding;
+    public class ViewHolder extends RecyclerView.ViewHolder {
+        final AdapterNextDaysBinding binding;
 
 
         public ViewHolder(AdapterNextDaysBinding binding) {
             super(binding.getRoot());
             this.binding = binding;
-            itemView.setOnClickListener(this);
         }
 
         public void bindItem(final int position) {
@@ -59,11 +56,6 @@ public class AdapterNextDays extends RecyclerView.Adapter<RecyclerView.ViewHolde
             binding.txtDate.setText(DateUtils.converDate(data.time));
         }
 
-        @Override
-        public void onClick(View v) {
-            int postition = getAdapterPosition();
-            listener.onItemSelected(postition);
-        }
     }
 
     @Override
@@ -71,9 +63,5 @@ public class AdapterNextDays extends RecyclerView.Adapter<RecyclerView.ViewHolde
         return dataList.size();
     }
 
-
-    public interface OnItemSelectedListener {
-        void onItemSelected(int position);
-    }
 
 }

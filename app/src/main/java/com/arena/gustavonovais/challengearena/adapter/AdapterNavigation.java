@@ -15,10 +15,12 @@ import java.util.List;
 public class AdapterNavigation extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
 
-    private List<City> cityList;
-    private OnItemSelectedListener listener;
-    public AdapterNavigation(OnItemSelectedListener listener) {
+    private final List<City> cityList;
+    private final OnItemSelectedListener listener;
+    private final OnDeleteItemListener listener1;
+    public AdapterNavigation(OnItemSelectedListener listener, OnDeleteItemListener listener1) {
         this.listener = listener;
+        this.listener1 = listener1;
         cityList = City.getAll();
     }
 
@@ -37,7 +39,7 @@ public class AdapterNavigation extends RecyclerView.Adapter<RecyclerView.ViewHol
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        AdapterNavigationBinding binding;
+        final AdapterNavigationBinding binding;
 
 
         public ViewHolder(AdapterNavigationBinding binding) {
@@ -47,16 +49,24 @@ public class AdapterNavigation extends RecyclerView.Adapter<RecyclerView.ViewHol
         }
 
         public void bindItem(final int position) {
-            City city = cityList.get(position);
+            final City city = cityList.get(position);
 
             //binding.imageViewIcon.setImageResource(City.getIcon());
             binding.txtTitle.setText(city.name);
+
+            binding.imgDelete.setVisibility(city.editable.equals("S") ? View.VISIBLE : View.GONE);
+            binding.imgDelete.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    listener1.OnDeleteItemListener(city);
+                }
+            });
         }
 
         @Override
         public void onClick(View v) {
             int postition = getAdapterPosition();
-            listener.onItemSelected(postition, cityList.get(postition));
+            listener.onItemSelected(cityList.get(postition));
         }
     }
 
@@ -67,7 +77,10 @@ public class AdapterNavigation extends RecyclerView.Adapter<RecyclerView.ViewHol
 
 
     public interface OnItemSelectedListener {
-        void onItemSelected(int position, City city);
+        void onItemSelected(City city);
+    }
+    public interface OnDeleteItemListener {
+        void OnDeleteItemListener(City city);
     }
 
 }

@@ -17,7 +17,7 @@ public enum Day {
         return id;
     }
 
-    private int id;
+    private final int id;
 
     Day(int id) {
         this.id = id;

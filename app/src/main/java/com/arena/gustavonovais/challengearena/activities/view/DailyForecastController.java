@@ -1,25 +1,20 @@
 package com.arena.gustavonovais.challengearena.activities.view;
 
 import android.databinding.DataBindingUtil;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.RelativeLayout;
 
 import com.arena.gustavonovais.challengearena.DailyForecastBinding;
 import com.arena.gustavonovais.challengearena.R;
-import com.arena.gustavonovais.challengearena.adapter.AdapterNavigation;
 import com.arena.gustavonovais.challengearena.adapter.AdapterNextDays;
 import com.arena.gustavonovais.challengearena.enums.Day;
 import com.arena.gustavonovais.challengearena.enums.IconEnum;
 import com.arena.gustavonovais.challengearena.model.City;
-import com.arena.gustavonovais.challengearena.model.Daily;
 import com.arena.gustavonovais.challengearena.model.Data;
 import com.arena.gustavonovais.challengearena.model.Forecast;
 import com.arena.gustavonovais.challengearena.retrofit.ManagerRequest;
@@ -39,7 +34,7 @@ import retrofit2.Response;
 
 public class DailyForecastController extends Controller implements SwipeRefreshLayout.OnRefreshListener{
 
-    private City city;
+    private final City city;
     private Forecast forecast;
     private View view;
     private DailyForecastBinding binding;
@@ -94,7 +89,6 @@ public class DailyForecastController extends Controller implements SwipeRefreshL
 
             @Override
             public void onFailure(Call<Forecast> call, Throwable t) {
-                Log.i("DEU RUIM", "DEU RUIM");
                 binding.swipeRefreshLayout.setRefreshing(false);
             }
         },lat, lng);
@@ -109,6 +103,7 @@ public class DailyForecastController extends Controller implements SwipeRefreshL
 
 
     private void configureNextDays() {
+        binding.txtNextDays.setVisibility(View.VISIBLE);
         binding.recyclerView.setLayoutManager(new LinearLayoutManager(this.getActivity()));
         binding.recyclerView.setHasFixedSize(true);
 

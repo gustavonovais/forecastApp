@@ -5,7 +5,6 @@ import android.support.v7.content.res.AppCompatResources;
 
 import com.arena.gustavonovais.challengearena.R;
 import com.arena.gustavonovais.challengearena.utils.ChallengeArenaApplication;
-import com.google.android.gms.maps.model.LatLng;
 
 /**
  * Created by gustavo on 17/09/2016.
@@ -27,8 +26,8 @@ public enum IconEnum {
         this.icon = icon;
     }
 
-    private String descricao;
-    private Drawable icon;
+    private final String descricao;
+    private final Drawable icon;
 
     public Drawable getIcon() {
         return icon;

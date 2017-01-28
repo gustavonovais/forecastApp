@@ -11,5 +11,6 @@ public class ParamKey {
     public static final String EXCLUDE = "?exclude=currently,flags,hourly,alerts,minutely";
     public static final String QUERY = "{lat},{lng}/";
     public static final String CITY = "CITY";
+    public static final String PLACE = "PLACE";
 
 }

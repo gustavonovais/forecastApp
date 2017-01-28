@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <data class=".HomeBinding"></data>
+    <data class=".HomeBinding" />
 
     <android.support.v4.widget.DrawerLayout xmlns:tools="http://schemas.android.com/tools"
         android:id="@+id/drawer_layout"
@@ -26,7 +26,7 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:orientation="vertical">
 
                 <android.support.v7.widget.RecyclerView
@@ -51,10 +51,10 @@
                 android:layout_gravity="bottom"
                 android:paddingBottom="20dp"
                 android:paddingTop="5dp"
-                android:text="Adicionar Localização"
+                android:text="@string/add_city"
                 android:textColor="@color/colorPrimaryDark"
                 android:textSize="18dp"
-                android:textStyle="bold"></TextView>
+                android:textStyle="bold" />
 
 
         </android.support.design.widget.NavigationView>

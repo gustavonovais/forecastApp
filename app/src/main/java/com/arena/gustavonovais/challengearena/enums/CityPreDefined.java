@@ -20,7 +20,7 @@ public enum CityPreDefined {
         return descricao;
     }
 
-    private String descricao;
+    private final String descricao;
 
     public LatLng getLatLng() {
         return latLng;

@@ -16,15 +16,11 @@ class DataRequest {
     private final RequestsEndPoints.EndPoints api;
 
     public DataRequest() {
-        HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
-        interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
-        OkHttpClient client = new OkHttpClient.Builder().addInterceptor(interceptor)
-                .readTimeout(40, TimeUnit.SECONDS).connectTimeout(40, TimeUnit.SECONDS)
-                .build();
+
 
         this.retrofit = new Retrofit.Builder()
                 .baseUrl(BuildConfig.ENDPOINT)
-                .client(client)
+                .client(getOkHttpClient())
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         api = this.retrofit.create(RequestsEndPoints.EndPoints.class);
@@ -32,12 +28,13 @@ class DataRequest {
 
     private static OkHttpClient getOkHttpClient() {
         try {
-            OkHttpClient.Builder builder = new OkHttpClient.Builder();
+            HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
+            interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+            OkHttpClient client = new OkHttpClient.Builder().addInterceptor(interceptor)
+                    .readTimeout(40, TimeUnit.SECONDS).connectTimeout(40, TimeUnit.SECONDS)
+                    .build();
 
-            builder.readTimeout(60, TimeUnit.SECONDS);
-            builder.connectTimeout(60, TimeUnit.SECONDS);
-
-            return builder.build();
+            return client;
         } catch (Exception e) {
             throw new RuntimeException(e);
         }

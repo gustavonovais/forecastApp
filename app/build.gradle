@@ -21,8 +21,6 @@ android {
 
         debug {
             debuggable true
-            applicationIdSuffix ".debug"
-            versionNameSuffix '-DEBUG'
             buildConfigField "String", "ENDPOINT", "\"https://api.darksky.net/\"";
             buildConfigField "String", "KEY", "\"831cf599ad4b65547ad2c752922e2adc/\"";
         }

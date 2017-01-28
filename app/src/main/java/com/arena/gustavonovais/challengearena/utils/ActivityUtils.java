@@ -9,6 +9,7 @@ import android.app.Activity;
 public class ActivityUtils {
 
     public static final String FAHRENHEIT = " ℉";
+    public static final int REQUEST_CODE_AUTOCOMPLETE = 1;
 
     public static int getStatusBarHeight(Activity activity) {
         int result = 0;
