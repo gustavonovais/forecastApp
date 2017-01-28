@@ -32,6 +32,7 @@ import com.google.android.gms.common.GooglePlayServicesRepairableException;
 import com.google.android.gms.common.api.Status;
 import com.google.android.gms.location.places.Place;
 import com.google.android.gms.location.places.ui.PlaceAutocomplete;
+import com.google.android.gms.maps.model.LatLng;
 
 public class HomeActivity extends AppCompatActivity implements AdapterNavigation.OnItemSelectedListener, View.OnClickListener, AdapterNavigation.OnDeleteItemListener {
 
@@ -147,12 +148,23 @@ public class HomeActivity extends AppCompatActivity implements AdapterNavigation
         if (requestCode == ActivityUtils.REQUEST_CODE_AUTOCOMPLETE) {
             if (resultCode == RESULT_OK) {
                 Place place = PlaceAutocomplete.getPlace(this, data);
-
-                City.createNewCity(place);
-                refreshMenuCities();
+                validateCity(place);
             } else if (resultCode == PlaceAutocomplete.RESULT_ERROR) {
                 Status status = PlaceAutocomplete.getStatus(this, data);
                 Log.e(ParamKey.PLACE, getString(R.string.error_status) + status.toString());
+            }
+        }
+    }
+
+    private void validateCity(Place place) {
+        City city = City.getByName(place.getName().toString());
+        if (city != null){
+            LatLng latLng = new LatLng(city.lat1, city.lng1);
+            if (latLng.equals(place.getLatLng())){
+                Toast.makeText(this, R.string.city_added, Toast.LENGTH_LONG).show();
+            } else {
+                City.createNewCity(place);
+                refreshMenuCities();
             }
         }
     }

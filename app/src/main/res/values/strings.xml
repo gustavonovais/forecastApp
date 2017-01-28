@@ -4,4 +4,5 @@
     <string name="google_message_error">"Google Play Services is not available: "</string>
     <string name="error_status">"Error: Status = "</string>
     <string name="add_city">Add City</string>
+    <string name="city_added">City already added</string>
 </resources>
