@@ -5,7 +5,7 @@ package com.arena.gustavonovais.challengearena.model;
  */
 
 public  class Data {
-    public double time;
+    public int time;
     public String summary;
     public String icon;
     public double sunriseTime;

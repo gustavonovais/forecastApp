@@ -8,6 +8,8 @@ import android.app.Activity;
 
 public class ActivityUtils {
 
+    public static final String FAHRENHEIT = " ℉";
+
     public static int getStatusBarHeight(Activity activity) {
         int result = 0;
         int resourceId = activity.getResources().getIdentifier("status_bar_height", "dimen", "android");
@@ -16,4 +18,5 @@ public class ActivityUtils {
         }
         return result;
     }
+
 }
