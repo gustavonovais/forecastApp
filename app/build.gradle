@@ -52,7 +52,7 @@ dependencies {
     compile 'com.bluelinelabs:conductor-support:2.0.1'
     compile 'com.michaelpardo:activeandroid:3.1.0-SNAPSHOT'
 
-    compile 'com.google.android.gms:play-services:10.0.1'
+    compile 'com.google.android.gms:play-services-places:10.0.1'
 
     compile 'com.squareup.retrofit2:retrofit:2.1.0'
     compile 'com.squareup.retrofit2:converter-gson:2.1.0'
