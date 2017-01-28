@@ -1,8 +1,13 @@
 package com.arena.gustavonovais.challengearena;
 
-import org.junit.Test;
+import com.google.android.gms.location.places.Place;
 
+import org.junit.Test;
+import org.mockito.Mockito;
+
+import static junit.framework.Assert.assertEquals;
 import static org.junit.Assert.*;
+import static org.mockito.Mockito.when;
 
 /**
  * Example local unit test, which will execute on the development machine (host).
@@ -14,4 +19,11 @@ public class ExampleUnitTest {
     public void addition_isCorrect() throws Exception {
         assertEquals(4, 2 + 2);
     }
+
+    @Test
+    public void validateTest(){
+
+    }
+
+
 }

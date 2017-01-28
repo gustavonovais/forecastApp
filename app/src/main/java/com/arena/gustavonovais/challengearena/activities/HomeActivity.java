@@ -1,5 +1,6 @@
 package com.arena.gustavonovais.challengearena.activities;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
@@ -88,12 +89,11 @@ public class HomeActivity extends AppCompatActivity implements AdapterNavigation
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.txtAddCity:
-                openAutocompleteActivity();
+                ActivityUtils.openAutocompleteActivity(this);
                 break;
             default:
                 break;
         }
-
     }
 
 
@@ -108,14 +108,14 @@ public class HomeActivity extends AppCompatActivity implements AdapterNavigation
     }
 
     private void setController(Bundle savedInstanceState) {
-        ViewGroup container = (ViewGroup)findViewById(R.id.controller_container);
+        ViewGroup container = (ViewGroup) findViewById(R.id.controller_container);
         router = Conductor.attachRouter(this, container, savedInstanceState);
 
         if (!router.hasRootController()) {
             Bundle bundle = new Bundle();
             bundle.putSerializable(ParamKey.CITY, City.getByName(CityPreDefined.DUBLIN.getDescricao()));
 
-            Controller controller =  new DailyForecastController(bundle);
+            Controller controller = new DailyForecastController(bundle);
             router.setRoot(RouterTransaction.with(controller));
         }
     }
@@ -128,19 +128,6 @@ public class HomeActivity extends AppCompatActivity implements AdapterNavigation
     }
 
 
-    private void openAutocompleteActivity() {
-        try {
-            Intent intent = new PlaceAutocomplete.IntentBuilder(PlaceAutocomplete.MODE_OVERLAY).build(this);
-            startActivityForResult(intent, ActivityUtils.REQUEST_CODE_AUTOCOMPLETE);
-        } catch (GooglePlayServicesRepairableException e) {
-            GoogleApiAvailability.getInstance().getErrorDialog(this, e.getConnectionStatusCode(),0 ).show();
-        } catch (GooglePlayServicesNotAvailableException e) {
-            String message = getString(R.string.google_message_error) + GoogleApiAvailability.getInstance().getErrorString(e.errorCode);
-            Log.e(ParamKey.PLACE, message);
-            Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
-        }
-    }
-
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -148,7 +135,9 @@ public class HomeActivity extends AppCompatActivity implements AdapterNavigation
         if (requestCode == ActivityUtils.REQUEST_CODE_AUTOCOMPLETE) {
             if (resultCode == RESULT_OK) {
                 Place place = PlaceAutocomplete.getPlace(this, data);
-                validateCity(place);
+                if (place != null) {
+                    validateCity(place);
+                }
             } else if (resultCode == PlaceAutocomplete.RESULT_ERROR) {
                 Status status = PlaceAutocomplete.getStatus(this, data);
                 Log.e(ParamKey.PLACE, getString(R.string.error_status) + status.toString());
@@ -158,18 +147,21 @@ public class HomeActivity extends AppCompatActivity implements AdapterNavigation
 
     private void validateCity(Place place) {
         City city = City.getByName(place.getName().toString());
-        if (city != null){
+        if (city != null) {
             LatLng latLng = new LatLng(city.lat1, city.lng1);
-            if (latLng.equals(place.getLatLng())){
+            if (latLng.equals(place.getLatLng())) {
                 Toast.makeText(this, R.string.city_added, Toast.LENGTH_LONG).show();
             } else {
                 City.createNewCity(place);
                 refreshMenuCities();
             }
+        } else {
+            City.createNewCity(place);
+            refreshMenuCities();
         }
     }
 
-    private void refreshMenuCities(){
+    private void refreshMenuCities() {
         adapter = new AdapterNavigation(this, this);
         homeBinding.recyclerViewMenu.setAdapter(adapter);
         homeBinding.recyclerViewMenu.getAdapter().notifyDataSetChanged();
