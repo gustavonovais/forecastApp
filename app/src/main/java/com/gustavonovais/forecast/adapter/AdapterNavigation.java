@@ -6,8 +6,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.arena.gustavonovais.forecast.AdapterNavigationBinding;
-import com.arena.gustavonovais.forecast.R;
+import com.gustavonovais.forecast.R;
+import com.gustavonovais.forecast.databinding.AdapterNavigationBinding;
 import com.gustavonovais.forecast.model.City;
 
 import java.util.List;

@@ -3,7 +3,7 @@ package com.gustavonovais.forecast.enums;
 import android.graphics.drawable.Drawable;
 import android.support.v7.content.res.AppCompatResources;
 
-import com.arena.gustavonovais.forecast.R;
+import com.gustavonovais.forecast.R;
 import com.gustavonovais.forecast.utils.ChallengeArenaApplication;
 
 /**

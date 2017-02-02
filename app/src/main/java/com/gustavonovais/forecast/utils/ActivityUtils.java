@@ -5,11 +5,11 @@ import android.content.Intent;
 import android.util.Log;
 import android.widget.Toast;
 
-import com.arena.gustavonovais.forecast.R;
 import com.google.android.gms.common.GoogleApiAvailability;
 import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
 import com.google.android.gms.common.GooglePlayServicesRepairableException;
 import com.google.android.gms.location.places.ui.PlaceAutocomplete;
+import com.gustavonovais.forecast.R;
 
 /**
  * Created by GustavoNovais on 27/01/17.

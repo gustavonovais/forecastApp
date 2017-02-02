@@ -1,7 +1,7 @@
 package com.gustavonovais.forecast.retrofit;
 
 
-import com.arena.gustavonovais.forecast.BuildConfig;
+import com.gustavonovais.forecast.BuildConfig;
 import com.gustavonovais.forecast.model.Forecast;
 import com.gustavonovais.forecast.utils.ParamKey;
 

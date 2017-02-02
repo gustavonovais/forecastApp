@@ -2,7 +2,8 @@ package com.gustavonovais.forecast.retrofit;
 
 
 
-import com.arena.gustavonovais.forecast.BuildConfig;
+
+import com.gustavonovais.forecast.BuildConfig;
 
 import java.util.concurrent.TimeUnit;
 

@@ -5,8 +5,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
-import com.arena.gustavonovais.forecast.AdapterNextDaysBinding;
-import com.arena.gustavonovais.forecast.R;
+import com.gustavonovais.forecast.R;
+import com.gustavonovais.forecast.databinding.AdapterNextDaysBinding;
 import com.gustavonovais.forecast.enums.IconEnum;
 import com.gustavonovais.forecast.model.Data;
 import com.gustavonovais.forecast.utils.ActivityUtils;

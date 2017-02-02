@@ -9,8 +9,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.arena.gustavonovais.forecast.DailyForecastBinding;
-import com.arena.gustavonovais.forecast.R;
+import com.gustavonovais.forecast.DailyForecastBinding;
+import com.gustavonovais.forecast.R;
 import com.gustavonovais.forecast.adapter.AdapterNextDays;
 import com.gustavonovais.forecast.enums.Day;
 import com.gustavonovais.forecast.enums.IconEnum;

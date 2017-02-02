@@ -14,8 +14,6 @@ import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
-import com.arena.gustavonovais.forecast.HomeBinding;
-import com.arena.gustavonovais.forecast.R;
 import com.bluelinelabs.conductor.Conductor;
 import com.bluelinelabs.conductor.Controller;
 import com.bluelinelabs.conductor.Router;
@@ -24,6 +22,8 @@ import com.google.android.gms.common.api.Status;
 import com.google.android.gms.location.places.Place;
 import com.google.android.gms.location.places.ui.PlaceAutocomplete;
 import com.google.android.gms.maps.model.LatLng;
+import com.gustavonovais.forecast.HomeBinding;
+import com.gustavonovais.forecast.R;
 import com.gustavonovais.forecast.activities.view.DailyForecastController;
 import com.gustavonovais.forecast.adapter.AdapterNavigation;
 import com.gustavonovais.forecast.enums.CityPreDefined;
