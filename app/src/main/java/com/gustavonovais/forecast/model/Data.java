@@ -1,4 +1,4 @@
-package com.arena.gustavonovais.challengearena.model;
+package com.gustavonovais.forecast.model;
 
 /**
  * Created by GustavoNovais on 27/01/17.

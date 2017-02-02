@@ -1,4 +1,4 @@
-package com.arena.gustavonovais.challengearena;
+package com.arena.gustavonovais.forecast;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

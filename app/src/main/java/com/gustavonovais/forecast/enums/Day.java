@@ -1,4 +1,4 @@
-package com.arena.gustavonovais.challengearena.enums;
+package com.gustavonovais.forecast.enums;
 
 /**
  * Created by leandro.vella on 05/11/16.

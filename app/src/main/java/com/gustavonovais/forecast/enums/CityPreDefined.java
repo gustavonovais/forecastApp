@@ -1,4 +1,4 @@
-package com.arena.gustavonovais.challengearena.enums;
+package com.gustavonovais.forecast.enums;
 
 import com.google.android.gms.maps.model.LatLng;
 

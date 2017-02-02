@@ -1,4 +1,4 @@
-package com.arena.gustavonovais.challengearena.model;
+package com.gustavonovais.forecast.model;
 
 import java.util.List;
 

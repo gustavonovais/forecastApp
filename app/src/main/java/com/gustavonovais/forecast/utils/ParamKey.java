@@ -1,4 +1,4 @@
-package com.arena.gustavonovais.challengearena.utils;
+package com.gustavonovais.forecast.utils;
 
 /**
  * Created by gustavo on 22/09/2016.

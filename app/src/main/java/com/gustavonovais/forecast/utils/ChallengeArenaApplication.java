@@ -1,4 +1,4 @@
-package com.arena.gustavonovais.challengearena.utils;
+package com.gustavonovais.forecast.utils;
 
 import android.app.Application;
 import android.content.Context;
